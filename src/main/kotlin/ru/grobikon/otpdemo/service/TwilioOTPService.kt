@@ -36,7 +36,7 @@ class TwilioOTPService(
 
     fun validateOTP(userInputOtp: String?, userName: String): Mono<String> {
         if (userInputOtp.equals(otpMap[userName])) {
-            return Mono.just("OTP совпадает продолжай свю транзакцию.")
+            return Mono.just("OTP совпадает продолжай свою транзакцию.")
         } else {
             return Mono.error(IllegalArgumentException("Ошибка OTP. Повторите логику."))
         }
@@ -44,6 +44,6 @@ class TwilioOTPService(
     }
 
     fun generateOTP(): String {
-        return DecimalFormat("000000").format(Random.nextInt(999999))
+        return DecimalFormat("0000").format(Random.nextInt(9999))
     }
 }
